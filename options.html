@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>PKU-Gateway</title>
+    <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="save.js"></script>
+    <script type="text/javascript" src="options.js"></script>
+  </head>
+  <body>
+    <p>PKU-Gateway 配置</p>
+    <fieldset>
+      <legend>基本信息</legend>
+      <table>
+	<tr>
+	  <td colspan="2">
+	    <select id="school">
+	      <option value="PKU">北京大学</option>
+	      <option value="BJMU">北京大学-医学部</option>
+	    </select>
+	  </td>
+	</tr>
+	<tr>
+	  <td>用户名</td>
+	  <td><input id="username" type="text" /></td>
+	</tr>
+	<tr>
+	  <td>密码</td>
+	  <td><input id="password" type="password" /></td>
+	</tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>默认选择账户</legend>
+      <table>
+	<tr>
+	  <td>
+	    <select id="default_school">
+	      <option value="PKU">北京大学</option>
+	      <option value="BJMU">北京大学-医学部</option>
+	    </select>
+	  </td>
+	</tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>国际网关保护</legend>
+      <table>
+	<tr>
+	  <td>
+	    <input id="protection_interval" type="text" name="time">分钟</input>
+	  </td>
+	</tr>
+      </table>
+    </fieldset>
+    <table>
+      <tr>
+	<td>
+	  <input id="save" type="button" value="保存" />
+	</td>
+	<td>
+	  <div id="status"></div>
+	</td>
+      </tr>
+    </table>
+  </body>
+</html>

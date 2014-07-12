@@ -1,0 +1,35 @@
+{
+   "manifest_version" : 2,
+
+
+    "name": "PKU-Gateway",
+    "description": "A Chrome extension which can be used to switch on/ff network in both Peking University and Peking University Health Science Center(BJMU).",
+    "version": "1.0",
+
+    "permissions": [
+	"http://*/*",
+	"https://*/*",
+	"tabs",
+	"webNavigation",
+	"storage",
+	"notifications",
+	"cookies"
+    ],
+
+    "browser_action": {
+	"default_icon": "resource/disconnected.png",
+	"default_popup": "popup.html",
+	"default_title": "PKU-Gateway"
+    },
+
+    "background": {
+	"scripts": ["jquery-2.1.0.min.js", "save.js", "PKUConnector.js", "BJMUConnector.js", "background.js"],
+	"persistent": true
+    },
+
+    "options_page": "options.html",
+
+    "web_accessible_resources": [
+	"resource/*.png"
+    ]
+ }
