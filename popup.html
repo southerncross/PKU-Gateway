@@ -1,36 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>PKU-Gateway</title>
-    <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
-    <!--<script type="text/javascript" src="jquery.cookie.js"></script>!-->
-    <script type="text/javascript" src="save.js"></script>
-    <script type="text/javascript" src="popup.js"></script>
+    <script src="jquery-2.1.0.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="popup.js"></script>
+    <!-- bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
-    <table>
+    <table class="table">
       <tr>
 	<td>
-	  <input type="button" value="   free   " id="connectFree"/>
+	  <input type="button" class="btn btn-lg btn-info" value="free" id="connect_free">
 	</td>
       </tr>
       <tr>
 	<td>
-	  <input type="button" value="   global   " id="connectGlobal"/>
+	  <input type="button" class="btn btn-lg btn-success" value="expensive" id="connect_expensive">
 	</td>
       </tr>
       <tr>
 	<td>
-	  <input type="button" value="disconnect me" id="disconnectMe" />
+	  <input type="button" class="btn btn-lg btn-warning" value="disconnect me" id="disconnect_me">
 	</td>
       </tr>
       <tr>
 	<td>
-	  <input type="button" value="disconnect all" id="disconnectAll" />
+	  <input type="button" class="btn btn-lg btn-danger" value="disconnect all" id="disconnect_all">
 	</td>
       </tr>
       <tr>
 	<td>
-	  <input type="button" value="  test  " id="test" />
+	  <input type="button" class="btn btn-lg btn-default" value="  test  " id="test">
 	</td>
       </tr>
     </table>

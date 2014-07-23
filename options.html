@@ -1,65 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>PKU-Gateway</title>
-    <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="save.js"></script>
-    <script type="text/javascript" src="options.js"></script>
+    <script src="jquery-2.1.0.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="data.js"></script>
+    <script src="options.js"></script>
+    <!-- bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
   </head>
   <body>
     <p>PKU-Gateway 配置</p>
-    <fieldset>
-      <legend>基本信息</legend>
-      <table>
-	<tr>
-	  <td colspan="2">
-	    <select id="school">
-	      <option value="PKU">北京大学</option>
-	      <option value="BJMU">北京大学-医学部</option>
-	    </select>
-	  </td>
-	</tr>
-	<tr>
-	  <td>用户名</td>
-	  <td><input id="username" type="text" /></td>
-	</tr>
-	<tr>
-	  <td>密码</td>
-	  <td><input id="password" type="password" /></td>
-	</tr>
-      </table>
-    </fieldset>
-    <fieldset>
-      <legend>默认选择账户</legend>
-      <table>
-	<tr>
-	  <td>
-	    <select id="default_school">
-	      <option value="PKU">北京大学</option>
-	      <option value="BJMU">北京大学-医学部</option>
-	    </select>
-	  </td>
-	</tr>
-      </table>
-    </fieldset>
-    <fieldset>
-      <legend>国际网关保护</legend>
-      <table>
-	<tr>
-	  <td>
-	    <input id="protection_interval" type="text" name="time">分钟</input>
-	  </td>
-	</tr>
-      </table>
-    </fieldset>
-    <table>
-      <tr>
-	<td>
-	  <input id="save" type="button" value="保存" />
-	</td>
-	<td>
-	  <div id="status"></div>
-	</td>
-      </tr>
-    </table>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">PKU</h3>
+      </div>
+      <div class="panel-body">
+	<div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">用户名</label>
+          <div class="controls">
+            <input type="text" placeholder="请输入网关帐号" class="input-xlarge" id="pku_username">
+            <p class="help-block"></p>
+          </div>
+        </div>
+	<div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">密码</label>
+          <div class="controls">
+            <input type="text" placeholder="请输入密码" class="input-xlarge" id="pku_password">
+            <p class="help-block"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">BJMU</h3>
+      </div>
+      <div class="panel-body">
+	<div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">用户名</label>
+          <div class="controls">
+            <input type="text" placeholder="请输入用户名" class="input-xlarge" id="bjmu_username">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+	<div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="input01">密码</label>
+          <div class="controls">
+            <input type="text" placeholder="请输入密码" class="input-xlarge" id="bjmu_password">
+            <p class="help-block"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+	<h3 class="panel-title">Default school</h3>
+      </div>
+      <div class="panel-body">
+	<div class="control-group">
+	  <!-- Select Basic -->
+	  <label class="control-label">默认登录帐号</label>
+	  <div class="controls">
+            <select class="input-xlarge" id="default_school">
+	      <option value="PKU">校本部</option>
+	      <option value="BJMU">医学部</option></select>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+	<h3 class="panel-title">Gateway protection</h3>
+      </div>
+      <div class="panel-body">
+	<div class="control-group">
+	  <!-- Prepended checkbox -->
+	  <label class="control-label">收费网关保护</label>
+	  <div class="controls">
+            <div class="input-prepend">
+	      <span class="add-on">
+		<label class="checkbox">
+		  <input type="checkbox" class="" checked="checked" id="protection_on">
+		</label>
+	      </span>
+	      <input class="span2" placeholder="请输入最长空闲分钟数" type="text" id="protection_interval">
+            </div>
+            <p class="help-block">设定后，当打开收费地址却在指定时间内无任何网页浏览行为，PKU-Gateway将自动切换回免费地址。</p>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label"></label>
+      <!-- Button -->
+      <div class="controls">
+	<button class="btn btn-default" id="save">保存</button>
+      </div>
+      <div id="status"></div>
+    </div>
+
   </body>
 </html>

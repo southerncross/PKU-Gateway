@@ -6,14 +6,22 @@
 
 $(document).ready(function() {
     var background = chrome.extension.getBackgroundPage();
-    var connector = background.connector;
+    var connector = background['connector'];
+    console.log(connector);
+    var ops = ['connect_free', 'connect_expensive', 'disconnect_me', 'disconnect_all', 'test'];
 
-    $("#connectFree").click(connector.connectFree);
-    $("#connectGlobal").click(connector.connectGlobal);
-    $("#disconnectMe").click(connector.disconnectMe);
-    $("#disconnectAll").click(connector.disconnectAll);
-    $("#test").click(connector.test);
+    Utils.forEach(ops, function(btnName) {
+	var funcName = btnName.replace(/(\w+)_(\w+)/g, function(match, v, adj) {
+	    if (adj) {
+		return v + adj.substring(0, 1).toUpperCase() + adj.substring(1);
+	    }
+	    else {
+		return v;
+	    }
+	});
 
-    connector.init();
-    console.log("hi");
+	console.log('btnName:' + btnName + ', funcName: ' + funcName);
+
+	$('#' + btnName).click(connector[funcName]);
+    });
 });

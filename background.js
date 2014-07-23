@@ -3,45 +3,36 @@
  * backgrounds.js
  */
 
-const IMG_GOOD = "resource/good";
-const IMG_BAD = "resource/bad";
-const ICON_FREE = "resource/free.png";
-const ICON_GLOBAL = "resource/global.png";
-const ICON_DISCONNECTED = "resource/disconnected.png";
-const STATE_FREE = "FREE";
-const STATE_GLOBAL = "GLOBAL";
-const STATE_DISCONNECTED = "DISCONNECTED";
-const STATE_UNKNOWN = "UNKNOWN";
-var school = "";
+var connector = {}; // global variable
 
-var data = Save.createNew();
-var connector = {};
-var protectionInterval = -1;
+(function init() {
+    chrome.storage.sync.get(new Data(), function(data) {
+	var shcool;
+	var account = {};
+	var protection = {};
 
-chrome.browserAction.setIcon({path: ICON_DISCONNECTED});
+	school = data['default_school'];
+	account['username'] = data[school.toLowerCase() + '_username'];
+	account['password'] = data[school.toLowerCase() + '_password'];
+	protection['on'] = data['protection_on'];
+	protection['interval'] = data['protection_interval'] > 0 ? data['protection_interval'] * 60000 : 30 * 60000;
 
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.tabs.create({
-	url: "options.html",
-	active: true
+	if (school.match(/PKU/)) {
+	    connector = new PKUConnector(account, protection);
+	}
+	else if (school.match(/BJMU/)){
+	    connector = new BJMUConnector(account, protection);
+	}
     });
-});
 
-chrome.storage.sync.get(data, function(items) {
-    school = items.statusInfo.defaultSchool;
+    chrome.webNavigation.onBeforeNavigate.addListener(connector.renewProtection);
 
-    switch (school) {
-    case "PKU":
-	alert("PKU");
-	connector = PKUConnector.newInstance();
-	break;
-    case "BJMU":
-	connector = BJMUConnector.newInstance();
-	break;
-    default:
-	alert("default?");
-	break;
-    }
-});
+    chrome.runtime.onInstalled.addListener(function() {
+	chrome.tabs.create({
+	    url: "options.html",
+	    active: true
+	});
+    });
 
+} ());
 

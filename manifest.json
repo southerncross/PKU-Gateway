@@ -1,5 +1,5 @@
 {
-   "manifest_version" : 2,
+    "manifest_version": 2,
 
 
     "name": "PKU-Gateway",
@@ -17,19 +17,27 @@
     ],
 
     "browser_action": {
-	"default_icon": "resource/disconnected.png",
+	"default_icon": "resource/icon/disconnected.png",
 	"default_popup": "popup.html",
 	"default_title": "PKU-Gateway"
     },
 
     "background": {
-	"scripts": ["jquery-2.1.0.min.js", "save.js", "PKUConnector.js", "BJMUConnector.js", "background.js"],
+	"scripts": [
+	    "jquery-2.1.0.min.js", 
+	    "utils.js", 
+	    "data.js",
+	    "pku.js", 
+	    "bjmu.js", 
+	    "background.js"
+	],
 	"persistent": true
     },
 
     "options_page": "options.html",
 
     "web_accessible_resources": [
-	"resource/*.png"
+	"resource/emotion/*.png",
+	"resource/icon/*.png"
     ]
- }
+}
