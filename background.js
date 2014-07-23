@@ -25,7 +25,7 @@ var connector = {}; // global variable
 	}
     });
 
-    chrome.webNavigation.onBeforeNavigate.addListener(connector.renewProtection);
+    chrome.webNavigation.onBeforeNavigate.addListener(function() {connector.renewProtection()});
 
     chrome.runtime.onInstalled.addListener(function() {
 	chrome.tabs.create({

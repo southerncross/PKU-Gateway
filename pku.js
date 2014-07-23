@@ -156,9 +156,19 @@ function PKUConnector(account, protection) {
 
 		_updateStatus(_operation2Status(operation));
 	    }
+	    else if (data.match(/当前连接数超过预定值/)) {
+		msg = ':( ' + operation + ' failed: 当前连接数超过预定值.';
+
+		Utils.notify(
+		    msg, {
+			'duration': 3000, 
+			'type': Utils['Emotion']['BAD']
+		    });
+	    }
 	    else {
 		msg = ':( ' + operation + ' failed: Unkown error.';
 		console.error(msg);
+		console.log(data);
 
 		Utils.notify(
 		    msg, {
